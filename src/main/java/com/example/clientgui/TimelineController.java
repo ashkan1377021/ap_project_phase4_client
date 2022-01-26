@@ -25,6 +25,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
+/**
+ * this class controls Timeline events
+ *
+ * @author ashkan_mogharab
+ */
 public class TimelineController implements Initializable {
     String username;
     usefulMethods usefulmethods = new usefulMethods();
@@ -38,6 +43,11 @@ public class TimelineController implements Initializable {
 
     }
 
+    /**
+     * this method checks that if code of a keyEvent is valid or not and if it is goes to related view
+     *
+     * @param event a keyEvent
+     */
     @FXML
     void shortCutKey(KeyEvent event) {
         try {
@@ -72,33 +82,60 @@ public class TimelineController implements Initializable {
 
     }
 
+    /**
+     * setter
+     *
+     * @param username a string which wants to be value of  username field
+     */
     public void setUsername(String username) {
         this.username = username;
     }
 
+    /**
+     * this method takes user to search view
+     *
+     * @param event an actionEvent
+     */
     @FXML
     void viewSearch1(ActionEvent event) throws IOException {
         viewSearch(event);
     }
 
+    /**
+     * this method takes user to tweet view
+     *
+     * @param event an actionEvent
+     */
     @FXML
     void showTweetScene1(ActionEvent event) throws IOException {
         showTweetScene(event);
     }
 
+    /**
+     * this method shows Timeline to user
+     *
+     * @param event an actionEvent
+     */
 
     @FXML
     void RefreshTimeline1(ActionEvent event) throws IOException, InterruptedException {
         comeToTimeline();
     }
 
+    /**
+     * this method takes user to profile view
+     *
+     * @param event an actionEvent
+     */
 
     @FXML
     void viewProfile1(ActionEvent event) throws IOException, InterruptedException {
         viewProfile(event);
     }
 
-
+    /**
+     * this method shows Timeline to user
+     */
     public void comeToTimeline() throws IOException, InterruptedException {
         TimelineArea.getChildren().clear();
         Socket socket = new Socket("127.0.0.1", 7600);
@@ -251,6 +288,12 @@ public class TimelineController implements Initializable {
         out.close();
     }
 
+    /**
+     * this method shows profile of a favorite user which pressed to its username in Timeline Area
+     *
+     * @param actionEvent an actionEvent
+     * @param button1     a button that its text is favorite user's username
+     */
     private void processOfShowFavoriteUserProfile(ActionEvent actionEvent, Button button1) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Profile-view2.fxml"));
@@ -268,6 +311,14 @@ public class TimelineController implements Initializable {
         }
     }
 
+    /**
+     * this method retweets a tweet or retweet of favorite user which is in Timeline Area
+     *
+     * @param button1 a button that its text is favorite user's username
+     * @param button2 a button that its text is numbers of retweets
+     * @param index   index of the main user
+     * @param index2  index of the tweet of favorite user which wants to be retweeted
+     */
     private void processOfRetweet(Button button1, Button button2, String index, String index2) {
         try {
             Socket so = new Socket("127.0.0.1", 7600);
@@ -300,6 +351,14 @@ public class TimelineController implements Initializable {
 
     }
 
+    /**
+     * this method likes a tweet or retweet of favorite user which is in Timeline Area
+     *
+     * @param button1 a button that its text is favorite user's username
+     * @param button3 a button that its text is numbers of likes
+     * @param index   index of the main user
+     * @param index2  index of the tweet of favorite user which wants to be liked
+     */
     private void processOfLike(Button button1, Button button3, String index, String index2) {
         try {
             Socket so = new Socket("127.0.0.1", 7600);
@@ -329,6 +388,11 @@ public class TimelineController implements Initializable {
         }
     }
 
+    /**
+     * this method takes user to tweet view
+     *
+     * @param event an event
+     */
     private void showTweetScene(Event event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Tweet-view.fxml"));
         Parent root = (Parent) loader.load();
@@ -341,6 +405,11 @@ public class TimelineController implements Initializable {
         stage.show();
     }
 
+    /**
+     * this method takes user to profile view
+     *
+     * @param event an event
+     */
     private void viewProfile(Event event) throws IOException, InterruptedException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Profile-view1.fxml"));
         Parent root = (Parent) loader.load();
@@ -354,6 +423,11 @@ public class TimelineController implements Initializable {
         stage.show();
     }
 
+    /**
+     * this method takes user to search view
+     *
+     * @param event an event
+     */
     private void viewSearch(Event event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("search-view.fxml"));
         Parent root = (Parent) loader.load();

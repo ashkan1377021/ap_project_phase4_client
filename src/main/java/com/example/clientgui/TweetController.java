@@ -20,6 +20,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
+/**
+ * this class controls tweet view events
+ *
+ * @author ashkan_mogharab
+ */
 public class TweetController implements Initializable {
     usefulMethods usefulmethods = new usefulMethods();
     String username;
@@ -29,6 +34,11 @@ public class TweetController implements Initializable {
     @FXML
     private Label resultMessage;
 
+    /**
+     * this method backs user from tweet view to Timeline by pressing back button
+     *
+     * @param event an actionEvent
+     */
     @FXML
     void backToTimeline1(ActionEvent event) throws IOException, InterruptedException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -43,6 +53,11 @@ public class TweetController implements Initializable {
         stage.show();
     }
 
+    /**
+     * by pressing Tweet button,this method connects to server and add a tweet for main user then backs user from tweet view to Timeline
+     *
+     * @param event an actionEvent
+     */
     @FXML
     void backToTimeline2(ActionEvent event) throws IOException, InterruptedException {
 
@@ -88,6 +103,11 @@ public class TweetController implements Initializable {
 
     }
 
+    /**
+     * setter
+     *
+     * @param username a string which wants to be value of  username field
+     */
     public void setUsername(String username) {
         this.username = username;
     }

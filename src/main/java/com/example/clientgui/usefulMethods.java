@@ -8,6 +8,11 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * this class has some useful methods
+ *
+ * @author ashkan_mogharab
+ */
 public class usefulMethods {
     /**
      * this method reads a message from its source

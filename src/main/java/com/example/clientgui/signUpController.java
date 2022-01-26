@@ -17,6 +17,11 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.util.Objects;
 
+/**
+ * this class controls main user sign up events
+ *
+ * @author ashkan_mogharab
+ */
 public class signUpController {
     private final usefulMethods usefulmethods = new usefulMethods();
     @FXML
@@ -45,6 +50,11 @@ public class signUpController {
     @FXML
     private Label resultMessage;
 
+    /**
+     * this method backs user from sign up view to sign in view
+     *
+     * @param event an actionEvent
+     */
     @FXML
     void backToSignIn(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("signIn-view.fxml")));
@@ -55,6 +65,11 @@ public class signUpController {
         stage.show();
     }
 
+    /**
+     * this method sends information of user to the server and checks that it could sign up or not
+     *
+     * @param event an actionEvent
+     */
     @FXML
     void checkSignUpRequest(ActionEvent event) throws IOException, InterruptedException {
         if (!firstnameField.getText().equals("") && !lastnameField.getText().equals("") && !usernameField.getText().equals("")

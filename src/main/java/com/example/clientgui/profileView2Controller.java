@@ -26,6 +26,11 @@ import java.nio.ByteBuffer;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
+/**
+ * this class controls other user profile events
+ *
+ * @author ashkan_mogharab
+ */
 public class profileView2Controller implements Initializable {
     String username;
     String username1;
@@ -47,6 +52,11 @@ public class profileView2Controller implements Initializable {
     @FXML
     private Button followOrUnfollowButton;
 
+    /**
+     * this method back main user from the other user profile to Timeline
+     *
+     * @param event an actionEvent
+     */
     @FXML
     void backToTimeline(ActionEvent event) throws IOException, InterruptedException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Timeline-view.fxml"));
@@ -61,22 +71,41 @@ public class profileView2Controller implements Initializable {
         stage.show();
     }
 
+    /**
+     * this method handles refresh
+     *
+     * @param event an actionEvent
+     */
     @FXML
     void refresh(ActionEvent event) throws IOException, InterruptedException {
         comeToProfileView2Controller(1);
     }
 
+    /**
+     * this method refresh profile and show liked tweets of  other user
+     *
+     * @param event an actionEvent
+     */
     @FXML
     void clickOnLikesButton(ActionEvent event) throws IOException, InterruptedException {
         comeToProfileView2Controller(2);
     }
 
+    /**
+     * is method refresh profile and show tweets and retweets of other user
+     *
+     * @param event an actionEvent
+     */
     @FXML
     void clickOnTweetButton(ActionEvent event) throws IOException, InterruptedException {
         comeToProfileView2Controller(1);
     }
 
-
+    /**
+     * this method receives image of other user profile from server
+     *
+     * @param in an input stream
+     */
     private Image receiveImage(InputStream in) throws IOException {
         byte[] sizeAr = new byte[4];
         in.read(sizeAr);
@@ -89,6 +118,12 @@ public class profileView2Controller implements Initializable {
         return (convertToFxImage(image));
     }
 
+    /**
+     * this method converts a buffered image to a fx image
+     *
+     * @param image a buffered image
+     * @return an image
+     */
     private Image convertToFxImage(BufferedImage image) {
         WritableImage wr = null;
         if (image != null) {
@@ -110,6 +145,11 @@ public class profileView2Controller implements Initializable {
 
     }
 
+    /**
+     * this method could follow or unfollow a user with connection to server
+     *
+     * @param event an actionEvent
+     */
     @FXML
     void followOrUnfollow(ActionEvent event) throws IOException, InterruptedException {
         Socket socket = new Socket("127.0.0.1", 7600);
@@ -136,11 +176,22 @@ public class profileView2Controller implements Initializable {
         out.close();
     }
 
+    /**
+     * setter
+     *
+     * @param username  a string which wants to be value of  username field
+     * @param username1 a string which wants to be value of  username1 field
+     */
     public void setUsername(String username, String username1) {
         this.username = username;
         this.username1 = username1;
     }
 
+    /**
+     * this method show profile of other user to main user
+     *
+     * @param sign if it is 1 means that this method should show tweets and if it is 2  shows likes
+     */
     public void comeToProfileView2Controller(int sign) throws IOException, InterruptedException {
         tweetsAndLikesArea.getChildren().clear();
         Socket socket = new Socket("127.0.0.1", 7600);

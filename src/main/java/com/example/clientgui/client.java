@@ -12,7 +12,9 @@ import java.io.IOException;
 import java.util.Objects;
 import java.util.Scanner;
 
-
+/**
+ * This class manages the login of each user to the application
+ */
 public class client extends Application {
     public static void main(String[] args) {
         launch();

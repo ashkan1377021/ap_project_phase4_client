@@ -20,6 +20,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
+/**
+ * this class controls search view events
+ *
+ * @author ashkan_mogharab
+ */
 public class searchViewController implements Initializable {
     String username;
     usefulMethods usefulmethods = new usefulMethods();
@@ -29,6 +34,11 @@ public class searchViewController implements Initializable {
     @FXML
     private Label resultMessage;
 
+    /**
+     * this method searches that a username is in database of the server or not and if it is shows profile of it .otherwise tells Not Found
+     *
+     * @param event an actionEvent
+     */
     @FXML
     void doSearch(ActionEvent event) throws IOException, InterruptedException {
         if (!(usernameTextField.getText().equals("") || usernameTextField == null)) {
@@ -64,6 +74,11 @@ public class searchViewController implements Initializable {
         }
     }
 
+    /**
+     * this method back user from search view to Timeline
+     *
+     * @param event an actionEvent
+     */
     @FXML
     void backToTimeline(ActionEvent event) throws IOException, InterruptedException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Timeline-view.fxml"));
@@ -83,6 +98,11 @@ public class searchViewController implements Initializable {
 
     }
 
+    /**
+     * setter
+     *
+     * @param username a string which wants to be value of  username field
+     */
     public void setUsername(String username) {
         this.username = username;
     }

@@ -10,6 +10,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+/**
+ * this class contains tweets that will show in Timeline Area
+ *
+ * @author ashkan_mogharab
+ */
 public class node {
     private final BorderPane borderpane;
     private final Button button1;
@@ -20,6 +25,9 @@ public class node {
     private final Label label2;
     private final HBox hBox1;
 
+    /**
+     * creates a new node
+     */
     public node() {
         borderpane = new BorderPane();
         borderpane.setPrefWidth(600);
@@ -74,34 +82,74 @@ public class node {
         borderpane.setCenter(vbox1);
     }
 
+    /**
+     * getter
+     *
+     * @return Parent of the node
+     */
     public Parent asParent() {
         return borderpane;
     }
 
+    /**
+     * getter
+     *
+     * @return button1 of the node
+     */
     public Button getButton1() {
         return button1;
     }
 
+    /**
+     * getter
+     *
+     * @return button2 of the node
+     */
     public Button getButton2() {
         return button2;
     }
 
+    /**
+     * getter
+     *
+     * @return button3 of the node
+     */
     public Button getButton3() {
         return button3;
     }
 
+    /**
+     * getter
+     *
+     * @return text Area of the node
+     */
     public TextArea getTextarea() {
         return textarea;
     }
 
+    /**
+     * getter
+     *
+     * @return label1 of the node
+     */
     public Label getLabel1() {
         return label1;
     }
 
+    /**
+     * getter
+     *
+     * @return label2 of the node
+     */
     public Label getLabel2() {
         return label2;
     }
 
+    /**
+     * getter
+     *
+     * @return hBox1 of the node
+     */
     public HBox getHBox1() {
         return hBox1;
     }

@@ -20,6 +20,11 @@ import java.net.Socket;
 import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
+/**
+ * this class controls main user sign in  events
+ *
+ * @author ashkan_mogharab
+ */
 public class signInController {
     private final usefulMethods usefulmethods = new usefulMethods();
     @FXML
@@ -34,6 +39,11 @@ public class signInController {
     @FXML
     private Label resultMessage;
 
+    /**
+     * this method backs user from sign in view to sign up view
+     *
+     * @param event an actionEvent
+     */
     @FXML
     void backToSignUp(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("signUp-view.fxml")));
@@ -44,6 +54,11 @@ public class signInController {
         stage.show();
     }
 
+    /**
+     * this method sends username and password of user to the server and checks that it could enter or not
+     *
+     * @param event an actionEvent
+     */
     @FXML
     void checkSignInRequest(ActionEvent event) throws IOException, InterruptedException, NoSuchAlgorithmException {
         if (!usernameField.getText().equals("") && !passwordField.getText().equals("")) {
