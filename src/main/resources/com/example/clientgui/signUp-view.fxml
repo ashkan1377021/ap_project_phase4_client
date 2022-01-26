@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clientgui.signUpController">
+   <top>
+      <HBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="600.0" BorderPane.alignment="TOP_RIGHT">
+         <children>
+            <Label text="Create your account">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="20.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="TOP_CENTER" prefHeight="44.0" prefWidth="600.0">
+               <children>
+                  <Label text="firstname:">
+                     <HBox.margin>
+                        <Insets right="20.0" top="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="firstnameField" prefHeight="25.0" prefWidth="100.0">
+                     <HBox.margin>
+                        <Insets right="50.0" top="15.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Label text="lastname:">
+                     <HBox.margin>
+                        <Insets right="10.0" top="19.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="lastnameField" prefHeight="25.0" prefWidth="100.0">
+                     <HBox.margin>
+                        <Insets top="13.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="46.0" prefWidth="600.0" spacing="10.0">
+               <children>
+                  <Label text="username:">
+                     <HBox.margin>
+                        <Insets left="40.0" top="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="usernameField" prefHeight="25.0" prefWidth="356.0">
+                     <HBox.margin>
+                        <Insets right="10.0" top="15.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="46.0" prefWidth="600.0" spacing="10.0">
+               <children>
+                  <Label text="password:">
+                     <HBox.margin>
+                        <Insets left="40.0" top="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="passwordField" prefHeight="25.0" prefWidth="356.0">
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="46.0" prefWidth="600.0" spacing="10.0">
+               <children>
+                  <Label text="Bio:">
+                     <HBox.margin>
+                        <Insets left="40.0" right="30.0" top="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="BioField" prefHeight="25.0" prefWidth="356.0">
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="57.0" prefWidth="600.0" spacing="10.0">
+               <children>
+                  <Label text="date of birth:">
+                     <HBox.margin>
+                        <Insets top="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="yearField" alignment="TOP_LEFT" prefHeight="15.0" prefWidth="100.0" text="year">
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="monthField" alignment="TOP_LEFT" prefHeight="15.0" prefWidth="100.0" text="month">
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="dayField" alignment="TOP_LEFT" prefHeight="15.0" prefWidth="100.0" text="day">
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <Button mnemonicParsing="false" onAction="#checkSignUpRequest" prefHeight="30.0" prefWidth="367.0" text="sign up">
+               <VBox.margin>
+                  <Insets left="90.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#backToSignIn" prefHeight="25.0" prefWidth="368.0" text="cancle">
+               <VBox.margin>
+                  <Insets left="90.0" top="2.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Label fx:id="resultMessage" alignment="CENTER" prefHeight="17.0" prefWidth="294.0">
+               <VBox.margin>
+                  <Insets left="80.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
