@@ -162,21 +162,21 @@ public class TimelineController implements Initializable {
             deleteButton.setPrefWidth(150);
             deleteButton.setPrefHeight(27);
             deleteButton.setText("delete");
-            deleteButton.setId("" + i);
             deleteButton.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent actionEvent) {
                     try {
                         Socket so = new Socket("127.0.0.1", 7600);
                         OutputStream ou = so.getOutputStream();
-                        String deletedTweetIndex = deleteButton.getId();
                         usefulmethods.send_message(ou, "2");
                         Thread.sleep(100);
                         usefulmethods.send_message(ou, index);
                         Thread.sleep(100);
                         usefulmethods.send_message(ou, "2");
                         Thread.sleep(100);
-                        usefulmethods.send_message(ou, deletedTweetIndex);
+                        usefulmethods.send_message(ou, node.getTextarea().getText());
+                        Thread.sleep(100);
+                        usefulmethods.send_message(ou, node.getLabel2().getText());
                         Thread.sleep(100);
                         comeToTimeline();
                     } catch (InterruptedException | IOException ex) {
