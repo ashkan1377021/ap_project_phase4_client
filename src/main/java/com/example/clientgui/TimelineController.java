@@ -191,7 +191,6 @@ public class TimelineController implements Initializable {
         for (int i = 0; i < favoriteUsersNumbers; i++) {
             int favoriteUserTweetNumbers = Integer.parseInt(usefulmethods.read_message(in));
             for (int j = 0; j < favoriteUserTweetNumbers; j++) {
-                String index2 = Integer.toString(j);
                 node node = new node();
                 node.getLabel2().setText(usefulmethods.read_message(in));
                 node.getButton2().setText(usefulmethods.read_message(in) + " Retweets");
@@ -208,20 +207,19 @@ public class TimelineController implements Initializable {
                 node.getButton2().setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent actionEvent) {
-                        processOfRetweet(node.getButton1(), node.getButton2(), index, index2);
+                        processOfRetweet(node.getButton1(), node.getButton2(), index, node.getTextarea().getText(), node.getLabel2().getText());
                     }
                 });
                 node.getButton3().setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent actionEvent) {
-                        processOfLike(node.getButton1(), node.getButton3(), index, index2);
+                        processOfLike(node.getButton1(), node.getButton3(), index, node.getTextarea().getText(), node.getLabel2().getText());
                     }
                 });
                 TimelineArea.getChildren().add(node.asParent());
             }
             int favoriteUserReTweetNumbers = Integer.parseInt(usefulmethods.read_message(in));
             for (int k = 0; k < favoriteUserReTweetNumbers; k++) {
-                String index3 = Integer.toString(k);
                 node node = new node();
                 node.getLabel1().setText(usefulmethods.read_message(in) + " Retweeted ");
                 node.getButton1().setText(usefulmethods.read_message(in));
@@ -232,13 +230,13 @@ public class TimelineController implements Initializable {
                 node.getButton3().setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent actionEvent) {
-                        processOfLike(node.getButton1(), node.getButton3(), index, index3);
+                        processOfLike(node.getButton1(), node.getButton3(), index, node.getTextarea().getText(), node.getLabel2().getText());
                     }
                 });
                 node.getButton2().setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent actionEvent) {
-                        processOfRetweet(node.getButton1(), node.getButton2(), index, index3);
+                        processOfRetweet(node.getButton1(), node.getButton2(), index, node.getTextarea().getText(), node.getLabel2().getText());
                     }
                 });
                 node.getButton1().setOnAction(new EventHandler<ActionEvent>() {
@@ -252,12 +250,11 @@ public class TimelineController implements Initializable {
             }
             int favoriteUserLikedNumbers = Integer.parseInt(usefulmethods.read_message(in));
             for (int p = 0; p < favoriteUserLikedNumbers; p++) {
-                String index4 = Integer.toString(p);
                 node node = new node();
                 node.getButton2().setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent actionEvent) {
-                        processOfRetweet(node.getButton1(), node.getButton2(), index, index4);
+                        processOfRetweet(node.getButton1(), node.getButton2(), index, node.getTextarea().getText(), node.getLabel2().getText());
                     }
                 });
                 node.getLabel1().setText(usefulmethods.read_message(in) + " liked");
@@ -269,7 +266,7 @@ public class TimelineController implements Initializable {
                 node.getButton3().setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent actionEvent) {
-                        processOfLike(node.getButton1(), node.getButton3(), index, index4);
+                        processOfLike(node.getButton1(), node.getButton3(), index, node.getTextarea().getText(), node.getLabel2().getText());
                     }
                 });
                 node.getButton1().setOnAction(new EventHandler<ActionEvent>() {
@@ -314,12 +311,13 @@ public class TimelineController implements Initializable {
     /**
      * this method retweets a tweet or retweet of favorite user which is in Timeline Area
      *
-     * @param button1 a button that its text is favorite user's username
-     * @param button2 a button that its text is numbers of retweets
-     * @param index   index of the main user
-     * @param index2  index of the tweet of favorite user which wants to be retweeted
+     * @param button1     a button that its text is favorite user's username
+     * @param button2     a button that its text is numbers of retweets
+     * @param index       index of the main user
+     * @param textOfTweet text of the tweet of favorite user which wants to be reTweeted
+     * @param sendTime    send time of the tweet of favorite user which wants to be reTweeted
      */
-    private void processOfRetweet(Button button1, Button button2, String index, String index2) {
+    private void processOfRetweet(Button button1, Button button2, String index, String textOfTweet, String sendTime) {
         try {
             Socket so = new Socket("127.0.0.1", 7600);
             OutputStream ou = so.getOutputStream();
@@ -334,7 +332,9 @@ public class TimelineController implements Initializable {
             Thread.sleep(100);
             usefulmethods.send_message(ou, button1.getText());
             Thread.sleep(100);
-            usefulmethods.send_message(ou, index2);
+            usefulmethods.send_message(ou, textOfTweet);
+            Thread.sleep(100);
+            usefulmethods.send_message(ou, sendTime);
             Thread.sleep(100);
             if (usefulmethods.read_message(inp).equals("true")) {
                 button2.setText(usefulmethods.read_message(inp) + " Retweets");
@@ -354,12 +354,13 @@ public class TimelineController implements Initializable {
     /**
      * this method likes a tweet or retweet of favorite user which is in Timeline Area
      *
-     * @param button1 a button that its text is favorite user's username
-     * @param button3 a button that its text is numbers of likes
-     * @param index   index of the main user
-     * @param index2  index of the tweet of favorite user which wants to be liked
+     * @param button1     a button that its text is favorite user's username
+     * @param button3     a button that its text is numbers of likes
+     * @param index       index of the main user
+     * @param textOfTweet text of the tweet of favorite user which wants to be liked
+     * @param sendTime    send time of the tweet of favorite user which wants to be liked
      */
-    private void processOfLike(Button button1, Button button3, String index, String index2) {
+    private void processOfLike(Button button1, Button button3, String index, String textOfTweet, String sendTime) {
         try {
             Socket so = new Socket("127.0.0.1", 7600);
             OutputStream ou = so.getOutputStream();
@@ -372,7 +373,9 @@ public class TimelineController implements Initializable {
             Thread.sleep(101);
             usefulmethods.send_message(ou, button1.getText());
             Thread.sleep(101);
-            usefulmethods.send_message(ou, index2);
+            usefulmethods.send_message(ou, textOfTweet);
+            Thread.sleep(101);
+            usefulmethods.send_message(ou, sendTime);
             Thread.sleep(101);
             if (usefulmethods.read_message(inp).equals("true")) {
                 button3.setText(usefulmethods.read_message(inp) + "likes");
